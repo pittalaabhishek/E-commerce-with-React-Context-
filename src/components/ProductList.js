@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react";
 import { useCart } from "./CartContext";
+import '../App.css';
 
 // const products = [
 //     { id: 1, name: 'Product 1', price: 10 },
@@ -32,14 +33,15 @@ const ProductList = () => {
       if (error) return <div>Error: {error}</div>;
 
     return (
-        <div>
+        <div className="product-container">
             <h1>Products</h1>
             <ul>
                 {products.map((item) => (
                     <li value={item.id}>
                         <img src={item.image} alt={item.title} style={{ width: '100px', height: '100px' }} />
-                        <span>{item.title}</span>
-                        <button onClick={()=>addToCart(item)}>Add To Cart</button>
+                        <span className="cart-item-name">{item.title}</span>
+                        <span className="cart-item-price">${item.price}</span>
+                        <button className="add-button" onClick={()=>addToCart(item)}>Add To Cart</button>
                     </li>
                 ))}
             </ul>
